@@ -1,0 +1,101 @@
+<!-- apps/bursary/templates/bursary/check_bursary_application_status.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Bursary Application Status</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        p.error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Check Bursary Application Status</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" required>
+        <button type="submit">Check Status</button>
+    </form>
+
+    {% if error_message %}
+        <p class="error">{{ error_message }}</p>
+    {% endif %}
+
+    {% if applicant %}
+        <div style="background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <p><strong>Name:</strong> {{ applicant.full_name }}</p>
+            <p><strong>Phone Number:</strong> {{ applicant.phone_number }}</p>
+            <p><strong>Email:</strong> {{ applicant.email }}</p>
+            <p><strong>Institution:</strong> {{ applicant.institution }}</p>
+            <p><strong>Education Level:</strong> {{ applicant.education_level }}</p>
+            <p><strong>Constituency:</strong> {{ applicant.constituency }}</p>
+            <p><strong>Ward:</strong> {{ applicant.ward }}</p>
+            <p><strong>Allocation Status:</strong> {{ applicant.allocation_status }}</p>
+            <p><strong>Allocated Amount:</strong> {{ applicant.allocated_amount }}</p>
+        </div>
+    {% endif %}
+</body>
+
+</html>

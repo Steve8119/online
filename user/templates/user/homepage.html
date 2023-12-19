@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end; /* Align to the right */
+      background-color: #555;
+      padding: 10px;
+    }
+
+    nav a {
+      margin-left: 10px; /* Add some space between links */
+      color: white;
+      text-decoration: none;
+    }
+
+    .buttons-container {
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    section {
+      margin: 20px;
+    }
+
+    article {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ONLINE BURSARY SYSTEM</h1>
+  </header>
+
+
+  <h2>welcome to online bursary system </h2>
+
+  <nav>
+    <div class="buttons-container">
+      <button onclick="location.href='{% url 'app1' %}'">Applicants</button>
+      <button onclick="location.href='{% url 'admin1' %}'">Administrator</button>
+    </div>
+    
+  </nav>
+
+  <section>
+    <article>
+      <h2>our mission</h2>
+      <p>Empower students through accessible online bursaries, fostering educational equity. We strive to alleviate financial barriers, enabling diverse learners to pursue academic excellence and shape a brighter future.</p>
+    </article>
+
+    <article>
+      <h2>our vision</h2>
+      <p>To revolutionize education by providing a seamless online bursary system, creating opportunities for every deserving student. Our vision is a world where financial constraints never hinder the pursuit of knowledge and personal growth.</p>
+    </article>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

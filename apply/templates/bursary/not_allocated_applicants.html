@@ -1,0 +1,73 @@
+{% extends 'bursary/base.html' %}
+
+{% block content %}
+    <h2>Not Allocated Applicants</h2>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    
+    <table>
+        <tr>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Institution</th>
+            
+        </tr>
+        {% for not_allocated_applicant in not_allocated_applicants %}
+        <tr>
+            <td>{{ not_allocated_applicant.full_name }}</td>
+            <td>{{ not_allocated_applicant.phone_number }}</td>
+            <td>{{ not_allocated_applicant.email }}</td>
+            <td>{{ not_allocated_applicant.institution }}</td>
+           
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="button-container">
+        {% comment %} <button onclick="location.href='{% url 'allocate_applicant' not_allocated_applicant.id %}'" type="button">Allocate</button>
+        <button onclick="location.href='{% url 'not_allocate_applicant' not_allocated_applicant.id %}'" type="button">Not Allocate</button> {% endcomment %}
+    </div>
+{% endblock %}

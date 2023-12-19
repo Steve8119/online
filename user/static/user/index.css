@@ -1,0 +1,55 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* index.css */
+
+/* Body styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #c42121; /* Set your desired background color */
+}
+
+/* Header styling */
+header {
+  margin-bottom: 20px;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #333; /* Set your desired navbar background color */
+  border: none;
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+
+.navbar-nav > li > a {
+  color: #fff !important;
+}
+
+/* Main content styling */
+.row {
+  margin: 20px 0;
+}
+
+/* Centered text styling */
+.center-text {
+  text-align: center;
+}
+
+/* Welcome message styling */
+h1 {
+  color: #333; /* Set your desired text color */
+}
+
+/* Responsive padding for small screens */
+@media (max-width: 767px) {
+  body {
+    padding-top: 70px;
+  }
+}

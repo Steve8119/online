@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        form {
+            display: inline-block;
+            margin: 0;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        .dashboard-box {
+            flex: 0 1 45%;
+            width: 10%;
+            padding: 20px;
+            background-color: #1cc225;
+            color: #160505;
+            text-align: center;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+            margin-top: 5%;
+            margin-bottom: 0px;
+            margin-left: 40%;
+            margin-right: 40%;
+            
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .document-link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Administrator Dashboard</h1>
+
+        
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Institution</th>
+                <th>Results</th>
+                <th>Fee Statement</th>
+                <th>Allocation Status</th>
+                <th>Allocated Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for applicant in applicants %}
+            <tr>
+                <td>{{ applicant.full_name }}</td>
+                <td>{{ applicant.phone_number }}</td>
+                <td>{{ applicant.email }}</td>
+                <td>{{ applicant.institution }}</td>
+                <td><a class="document-link" href="{{ applicant.document_url }}" target="_blank">View Results</a></td>
+                <td><a class="document-link" href="{{ applicant.fee_statement_url }}" target="_blank">View Fee Statement</a></td>
+                <td>{{ applicant.allocation_status }}</td>
+                <td>{{ applicant.allocated_amount }}</td>
+                <td>
+                    <form action="{% url 'allocate_applicant' applicant.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Allocate</button>
+                    </form>
+                    <form action="{% url 'not_allocate_applicant' applicant.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Not Allocate</button>
+                    </form>
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="dashboard-box" onclick="location.href='{% url 'allocated_applicants' %}'">Allocate</div>
+    <div class="dashboard-box" onclick="location.href='{% url 'not_allocated_applicants' %}'">not Allocated</div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+{% extends "user/index.html" %}
+{% load crispy_forms_tags %}
+{% block start %}
+<head>
+  <style>
+    body {
+      background-color: white; /* Set a light background color */
+    }
+
+    .content-section {
+      width: 38%;
+      background-color: white; /* Set a white background for the form container */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    }
+
+    form {
+      max-width: 400px; /* Set a maximum width for the form */
+      margin: auto;
+    }
+
+    fieldset {
+      border: none; /* Remove border from the form fields */
+    }
+
+    button {
+      background-color: #26b92d; /* Set a dark background color for the button */
+      color: #ad5151; /* Set text color to white */
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #495057; /* Darken the background on hover */
+    }
+
+    sub a {
+      color: #007bff; /* Set link color to blue */
+    }
+  </style>
+</head>
+
+<div class="content-section col-md-8 col-md-offset-2">
+  <form method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      {{ form|crispy}}
+    </fieldset>
+    <center>
+      <button style="background: black; padding:2%; font-size: 2rem; color:white;" class="btn btn-outline-info" type="submit"><span class="glyphicon glyphicon-check"></span> &nbsp; sign up</button>
+    </center>
+    <br />
+    <sub><a href="{% url "login" %}" style="text-decoration: none; color: blue; padding:3%; cursor:pointer;">Already have an account ?</a></sub>
+  </form>
+</div>
+{% endblock start %}
